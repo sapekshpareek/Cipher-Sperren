@@ -1,129 +1,130 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+def encode():
+    """By using this you can encrypt you message in a secret message which can only decoded by this same program."""
 
-# C extensions
-*.so
+    string = input('\nEnter The Message You Want to Encrypt (Encode): ')
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+    # Splitting String into list elements by spaces.
+    ele = string.split(" ")
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+    size = len(ele)
+    import string
+    import random
+    for i in range(size):
+        temp = ele[i]
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
+        # for less than 3 letters in a word
+        if len(temp) < 3:
+            inti_val = temp[0:1]
+            temp += inti_val
+            a = temp[1:]
 
-# Translations
-*.mo
-*.pot
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+            #including 3 ranom letters at start and end
+            start = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=3))
+            end = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=3))
+            ele[i] = str(start) + a + str(end)
 
-# Flask stuff:
-instance/
-.webassets-cache
 
-# Scrapy stuff:
-.scrapy
+        # for more than 3 letters in a word
+        else:
+            inti_val = temp[0:3]
+            temp += inti_val
+            a = temp[3:]
 
-# Sphinx documentation
-docs/_build/
 
-# PyBuilder
-target/
+            # including 3 ranom letters at start and end
+            start = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=3))
+            end =  ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=3))
+            ele[i] = str(start)+a+str(end)
 
-# Jupyter Notebook
-.ipynb_checkpoints
+    print('\nYour Secret String:',end = " ")
+    for i in range(size):
+        print(ele[i], end=" ")
+    choose()
 
-# IPython
-profile_default/
-ipython_config.py
 
-# pyenv
-.python-version
+def decode():
+    """By using this you can decrypt the secret message which you encrypted previously (Encryption done by this program are only supported)."""
 
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
+    string = input('\nEnter The Message You Want to Dencrypt (Decode): ')
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
-__pypackages__/
+    # Splitting String into list elements by spaces.
+    ele = string.split(" ")
 
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
+    size = len(ele)
+    for i in range(size):
+        temp = ele[i]
 
-# SageMath parsed files
-*.sage.py
+         # decode main code
+        temp = temp[3:]
+        temp = temp[:-3]
 
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+        # for Single letter in a word
+        if(len(temp)==1):
+            ele[i] = temp
 
-# Spyder project settings
-.spyderproject
-.spyproject
+        #for two letters in a word
+        elif(len(temp)<3):
+            temp += temp[:-1]
+            temp = temp[1:]
+            ele[i] = temp
+            print(temp)
 
-# Rope project settings
-.ropeproject
+        #for more than two letters in a word
+        else:
+            start = temp[-3:]
+            start += temp[:-3]
+            ele[i] = start
+    for i in range(size):
+        print(ele[i], end=" ")
+    choose()
 
-# mkdocs documentation
-/site
 
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
+def choose():
+    """This Function was used to ask choice of user."""
+    print('\nWhat do you want to do?')
+    choice = input('\n1. Encode\n2. Decode\n3. More Info\n4. Quit\n\nEnter a Choice: ')
+    if choice == '1':
+        print(encode())
+    elif choice == '2':
+        print(decode())
+    elif choice == '3':
+        print(moreinfo())
+    elif choice == '4':
+        print('\nHave a Nice Day!')
+        a = input()
+    else:
+        print('\nEnter a Correct Input!')
+        choose()
 
-# Pyre type checker
-.pyre/
+
+def moreinfo():
+    """This Function was used to Give info About Functions used in the Program."""
+
+    print('\nWant Information about: ')
+    choice = input('\n1. Encryption (Encode)\n2. Decryption (Decode)\n3. About Developer\n4. Back To Main Menu\n\nEnter a Choice: ')
+    if choice == '1':
+        print()
+        print(encode.__doc__)
+        choose()
+    elif choice == '2':
+        print()
+        print(decode.__doc__)
+        choose()
+    elif choice == '3':
+        print('\nThis Program is Developed by Sapeksh Pareek')
+        choose()
+    elif choice == '4':
+        choose()
+    else:
+        print('\nEnter a Correct Input!')
+        moreinfo()
+
+
+print('Welcome To Secret Messenger!')
+choose()
+# decode()
+# encode()
+# moreinfo()
+# test()
