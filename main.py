@@ -1,5 +1,6 @@
 def encode():
-    """By using this you can encrypt you message in a secret message which can only decoded by this same program."""
+    """This is used to encrypt the message in an encrypted form that is only decrypted by the same programme,
+    creating a secret message."""
 
     string = input('\nEnter The Message You Want to Encrypt (Encode): ')
 
@@ -13,27 +14,28 @@ def encode():
         temp = ele[i]
 
 
-        # for less than 3 letters in a word
+        # For words with fewer than three letters
         if len(temp) < 3:
             inti_val = temp[0:1]
             temp += inti_val
             a = temp[1:]
 
 
-            #including 3 ranom letters at start and end
+            #Three ranom letters at the beginning and conclusion
+
             start = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=3))
             end = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=3))
             ele[i] = str(start) + a + str(end)
 
 
-        # for more than 3 letters in a word
+        # For words with more than three letters
         else:
             inti_val = temp[0:3]
             temp += inti_val
             a = temp[3:]
 
 
-            # including 3 ranom letters at start and end
+            # three ranom letters at the beginning and conclusion
             start = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=3))
             end =  ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=3))
             ele[i] = str(start)+a+str(end)
@@ -45,7 +47,8 @@ def encode():
 
 
 def decode():
-    """By using this you can decrypt the secret message which you encrypted previously (Encryption done by this program are only supported)."""
+    """This allows you to decode a secret message that you have previously encrypted (only encryptions made with this
+    program are supported)."""
 
     string = input('\nEnter The Message You Want to Dencrypt (Decode): ')
 
@@ -84,7 +87,7 @@ def decode():
 def choose():
     """This Function was used to ask choice of user."""
     print('\nWhat do you want to do?')
-    choice = input('\n1. Encode\n2. Decode\n3. More Info\n4. Quit\n\nEnter a Choice: ')
+    choice = input('\n1. Encode\t\t\t2. Decode\n3. More Info\t\t4. Quit\n\nEnter a Choice (Number): ')
     if choice == '1':
         print(encode())
     elif choice == '2':
