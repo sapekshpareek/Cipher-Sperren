@@ -90,7 +90,7 @@ def decode():
 def choose():
     """This Function was used to ask choice of user."""
     print('\nWhat do you want to do?')
-    choice = input('\n1. Encode\t\t\t2. Decode\n3. More Info\t\t4. Quit\n\nEnter a Choice (Number): ')
+    choice = input('\n1. Encode\t\t2. Decode\n3. More Info\t\t4. Quit\n\nEnter a Choice (Number): ')
     if choice == '1':
         print(encode())
     elif choice == '2':
