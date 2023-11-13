@@ -1,6 +1,8 @@
 def encode():
-    """This is used to encrypt the message in an encrypted form that is only decrypted by the same programme,
-    creating a secret message."""
+    """This is used to encrypt the message in an encrypted form that is only decrypted by the same programme, creating a secret message.
+    1. Enter a message and it will give a strange message copy it and use it anywhere.
+    2. When needed use decryptor and enter above message given by program.
+    3. It will give you the correct readable message."""
 
     string = input('\nEnter The Message You Want to Encrypt (Encode): ')
 
@@ -40,15 +42,16 @@ def encode():
             end =  ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=3))
             ele[i] = str(start)+a+str(end)
 
-    print('\nYour Secret String:',end = " ")
+    print('\nYour Secret String:\n')
     for i in range(size):
         print(ele[i], end=" ")
     choose()
 
 
 def decode():
-    """This allows you to decode a secret message that you have previously encrypted (only encryptions made with this
-    program are supported)."""
+    """This allows you to decode a secret message that you have previously encrypted (only encryption made with this program are supported).
+    1. Enter the strange encrypted message given by program.
+    2. It will give you the actual readable message that was entered previously."""
 
     string = input('\nEnter The Message You Want to Dencrypt (Decode): ')
 
