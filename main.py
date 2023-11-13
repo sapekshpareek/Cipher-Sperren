@@ -42,9 +42,10 @@ def encode():
             end =  ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=3))
             ele[i] = str(start)+a+str(end)
 
-    print('\nYour Secret String:\n')
+    print('\nYour Secret Message is:\n')
     for i in range(size):
         print(ele[i], end=" ")
+    print()
     choose()
 
 
@@ -84,6 +85,7 @@ def decode():
             ele[i] = start
     for i in range(size):
         print(ele[i], end=" ")
+    print()
     choose()
 
 
