@@ -1,3 +1,20 @@
+def key():
+    import re
+    key = input('\nCreate a Key to Encrypt it: ')
+    key.lower()
+
+    # Splitting Key into characters.
+    key1 = []
+
+    x = re.findall("[a-z0-9]", key)
+
+    for char in key:
+        key1.append(char)
+
+    key2 = [eval(i) for i in key1]
+    return key2
+
+
 def encode():
     """This is used to encrypt the message in an encrypted form that is only decrypted by the same programme, creating a secret message.
     1. Enter a message and it will give a strange message copy it and use it anywhere.
@@ -5,6 +22,7 @@ def encode():
     3. It will give you the correct readable message."""
 
     string = input('\nEnter The Message You Want to Encrypt (Encode): ')
+    pin = key()
 
     # Splitting String into list elements by spaces.
     ele = string.split(" ")
@@ -38,9 +56,9 @@ def encode():
 
 
             # three ranom letters at the beginning and conclusion
-            start = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=3))
-            end =  ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=3))
-            ele[i] = str(start)+a+str(end)
+            start = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=pin[0]))
+            end =  ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=pin[1]))
+            ele[i] = str(start) + a + str(end)
 
     print('\nYour Secret Message is:\n')
     for i in range(size):
