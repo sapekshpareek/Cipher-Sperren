@@ -50,10 +50,11 @@ def encode():
 
         # For words with more than three letters
         else:
-            inti_val = temp[0:3]
-            temp += inti_val
-            a = temp[3:]
-
+            inti_val = temp[0:pin[2]]   # Start Part Slice
+            rand = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=pin[3]))
+            rand += inti_val    #Random Value + Start Value
+            temp += rand    # Main String + Random String + Starting
+            a = temp[pin[2]:]   # Slicing Start from Main's Beginning
 
             # three ranom letters at the beginning and conclusion
             start = ''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=pin[0]))
@@ -73,6 +74,7 @@ def decode():
     2. It will give you the actual readable message that was entered previously."""
 
     string = input('\nEnter The Message You Want to Dencrypt (Decode): ')
+    pin = key()
 
     # Splitting String into list elements by spaces.
     ele = string.split(" ")
@@ -82,8 +84,8 @@ def decode():
         temp = ele[i]
 
          # decode main code
-        temp = temp[3:]
-        temp = temp[:-3]
+        temp = temp[pin[0]:]
+        temp = temp[:-pin[1]]
 
         # for Single letter in a word
         if(len(temp)==1):
