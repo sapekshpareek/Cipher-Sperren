@@ -85,7 +85,9 @@ def decode():
 
          # decode main code
         temp = temp[pin[0]:]
+        print(temp) # for the test
         temp = temp[:-pin[1]]
+        print(temp) # for the test
 
         # for Single letter in a word
         if(len(temp)==1):
