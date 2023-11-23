@@ -86,6 +86,7 @@ def decode():
          # decode main code
         temp = temp[pin[0]:]
         temp = temp[:-pin[1]]
+        print(temp)
 
         # for Single letter in a word
         if(len(temp)==1):
@@ -100,8 +101,10 @@ def decode():
 
         #for more than two letters in a word
         else:
-            start = temp[-3:]
-            start += temp[:-3]
+            start = temp[-pin[2]:]
+            print(start)
+            start += temp[:-pin[3]]
+            print(start)
             ele[i] = start
     for i in range(size):
         print(ele[i], end=" ")
