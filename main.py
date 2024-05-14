@@ -1,3 +1,0 @@
-import choose
-
-choose.choose()
