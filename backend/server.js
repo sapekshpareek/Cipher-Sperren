@@ -10,6 +10,10 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+    res.json({ status: 'Server is healthy' });
+  });
+
 app.post('/encrypt', (req, res) => {
   const { data } = req.body;
   const encrypted = encryptString(data); // Your encryption function
@@ -17,5 +21,5 @@ app.post('/encrypt', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on PORT ${PORT}`);
 });

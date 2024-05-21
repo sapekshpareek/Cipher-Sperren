@@ -8,9 +8,13 @@ const Home = () => {
   const [inputData, setInputData] = useState('');
   const [encryptedData, setEncryptedData] = useState('');
 
+  // Use the environment variable
+  const URL = process.env.NEXT_PUBLIC_API_URL;
+  console.log(URL);
+
   const handleEncrypt = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/encrypt', { data: inputData });
+      const response = await axios.post(`${URL}encrypt`, { data: inputData });
       setEncryptedData(response.data.encrypted);
     } catch (error) {
       console.error('Error encrypting data:', error);
