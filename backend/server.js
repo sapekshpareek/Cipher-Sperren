@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    res.json({ status: 'Server is healthy' });
+    res.send('Server Running...'); 
   });
 
 app.post('/encrypt', (req, res) => {
