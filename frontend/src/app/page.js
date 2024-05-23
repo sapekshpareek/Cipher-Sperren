@@ -1,12 +1,13 @@
-'use client';
+"use client";
 // pages/index.js
-import { Button, TextField, Typography } from '@mui/material';
-import axios from 'axios';
-import { useState } from 'react';
+import { Box } from "@mui/material";
+import axios from "axios";
+import { useState } from "react";
+import GoogleLoginButton from "../components/GoogleLoginButton";
 
 const Home = () => {
-  const [inputData, setInputData] = useState('');
-  const [encryptedData, setEncryptedData] = useState('');
+  const [inputData, setInputData] = useState("");
+  const [encryptedData, setEncryptedData] = useState("");
 
   // Use the environment variable
   const URL = process.env.NEXT_PUBLIC_API_URL;
@@ -17,30 +18,14 @@ const Home = () => {
       const response = await axios.post(`${URL}encrypt`, { data: inputData });
       setEncryptedData(response.data.encrypted);
     } catch (error) {
-      console.error('Error encrypting data:', error);
+      console.error("Error encrypting data:", error);
     }
   };
 
   return (
-    <div>
-      <Typography variant="h4">Data Encryption</Typography>
-      <TextField
-        label="Enter data"
-        variant="outlined"
-        fullWidth
-        value={inputData}
-        onChange={(e) => setInputData(e.target.value)}
-        margin="normal"
-      />
-      <Button variant="contained" onClick={handleEncrypt}>
-        Encrypt
-      </Button>
-      {encryptedData && (
-        <Typography variant="h6" marginTop={2}>
-          Encrypted Data: {encryptedData}
-        </Typography>
-      )}
-    </div>
+    <Box sx={{ justifyContent: "center", alignItems: "center" }}>
+      <GoogleLoginButton />
+    </Box>
   );
 };
 
