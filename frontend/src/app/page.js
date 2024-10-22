@@ -23,7 +23,13 @@ const Home = () => {
   };
 
   return (
-    <Box sx={{ justifyContent: "center", alignItems: "center" }}>
+    <Box
+      sx={{
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#f00005",
+      }}
+    >
       <GoogleLoginButton />
     </Box>
   );
