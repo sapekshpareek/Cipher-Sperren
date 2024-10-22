@@ -16,7 +16,6 @@ const GoogleLoginButton = () => {
         alignItems: "center",
         minHeight: "100vh",
         backgroundColor: "#f0d7f5",
-        objectFit: "fill",
         display: "flex",
       }}
     >
