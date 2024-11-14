@@ -1,26 +1,22 @@
 "use client";
-// pages/index.js
 import { Box } from "@mui/material";
-import axios from "axios";
-import { useState } from "react";
-import GoogleLoginButton from "../components/GoogleLoginButton";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
 
 const Home = () => {
-  const [inputData, setInputData] = useState("");
-  const [encryptedData, setEncryptedData] = useState("");
+  const { user, loading } = useAuth();
+  const router = useRouter();
 
-  // Use the environment variable
-  const URL = process.env.NEXT_PUBLIC_API_URL;
-  console.log(URL);
-
-  const handleEncrypt = async () => {
-    try {
-      const response = await axios.post(`${URL}encrypt`, { data: inputData });
-      setEncryptedData(response.data.encrypted);
-    } catch (error) {
-      console.error("Error encrypting data:", error);
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login');
     }
-  };
+  }, [user, loading, router]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Box
@@ -28,9 +24,11 @@ const Home = () => {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#f00005",
+        padding: "20px",
       }}
     >
-      <GoogleLoginButton />
+      <h1>Cipher Sperren</h1>
+      {user && <h2>Hello, {user.name}</h2>}
     </Box>
   );
 };
