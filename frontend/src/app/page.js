@@ -2,6 +2,8 @@
 import { Box } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 import { useAuth } from "../context/AuthContext";
 
 const Home = () => {
@@ -19,16 +21,25 @@ const Home = () => {
   }
 
   return (
-    <Box
-      sx={{
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#f00005",
-        padding: "20px",
-      }}
-    >
-      <h1>Cipher Sperren</h1>
-      {user && <h2>Hello, {user.name}</h2>}
+    <Box sx={{ 
+      display: 'flex', 
+      flexDirection: 'column',
+      minHeight: '100vh'
+    }}>
+      <Navbar />
+      <Box
+        sx={{
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#f00005",
+          padding: "20px",
+          flex: '1'
+        }}
+      >
+        <h1>Cipher Sperren</h1>
+        {user && <h2>Hello, {user.name}</h2>}
+      </Box>
+      <Footer />
     </Box>
   );
 };
