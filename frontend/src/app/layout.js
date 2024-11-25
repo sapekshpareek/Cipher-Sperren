@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "../context/AuthContext";
 import "./globals.css";
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AuthProvider>
           {children}
+          <Toaster/>
         </AuthProvider>
       </body>
     </html>

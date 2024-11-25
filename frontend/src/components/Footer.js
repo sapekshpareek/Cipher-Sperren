@@ -11,7 +11,7 @@ const Footer = () => {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '20px',
-        backgroundColor: '#f0d7f5',
+        backgroundColor: '#fddfff',
         borderTop: '1px solid rgba(0, 0, 0, 0.1)',
         width: '100%',
         marginTop: 'auto',

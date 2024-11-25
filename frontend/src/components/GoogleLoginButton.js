@@ -4,6 +4,7 @@ import { Box, Card } from "@mui/material";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
+import toast from 'react-hot-toast';
 import { useAuth } from "../context/AuthContext";
 
 const client = process.env.NEXT_PUBLIC_CLIENT_ID;
@@ -19,7 +20,6 @@ const GoogleLoginButton = () => {
       }
 
       const decoded = jwtDecode(credentialResponse.credential);
-      console.log('Decoded token:', decoded);
       
       if (!decoded || !decoded.name || !decoded.email) {
         throw new Error('Invalid token payload');
@@ -33,9 +33,10 @@ const GoogleLoginButton = () => {
       };
       
       await login(userData);
-      // The redirect will be handled by the login function in AuthContext
+      toast.success('Successfully logged in!');
     } catch (error) {
       console.error('Login error:', error);
+      toast.error('Failed to login. Please try again.');
       setError('Failed to login. Please try again.');
     }
   };

@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from 'next/navigation';
 import { createContext, useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const AuthContext = createContext();
 
@@ -33,8 +34,10 @@ export function AuthProvider({ children }) {
       localStorage.setItem('user', JSON.stringify(userData));
       document.cookie = `auth_token=${userData.token}; path=/; secure; samesite=strict`;
       router.push('/');
+      toast.success('Welcome back!');
     } catch (err) {
       setError('Failed to log in');
+      toast.error('Authentication failed');
       console.error('Login error:', err);
     }
   };
@@ -45,8 +48,10 @@ export function AuthProvider({ children }) {
       localStorage.removeItem('user');
       document.cookie = 'auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT; secure; samesite=strict';
       router.push('/login');
+      toast.success('Logged out successfully');
     } catch (err) {
       setError('Failed to log out');
+      toast.error('Logout failed');
       console.error('Logout error:', err);
     }
   };

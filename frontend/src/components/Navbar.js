@@ -1,5 +1,6 @@
 import { Avatar, Box, Button, Popover, Typography } from '@mui/material';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
@@ -18,8 +19,10 @@ const Navbar = () => {
     try {
       await logout();
       handleClose();
+      toast.success('Successfully logged out!');
     } catch (error) {
       console.error('Logout error:', error);
+      toast.error('Failed to logout. Please try again.');
     }
   };
 
@@ -32,7 +35,10 @@ const Navbar = () => {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '10px 20px',
-        backgroundColor: '#f0d7f5',
+        backgroundColor: '#fddfff',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+        position: 'relative',
+        zIndex: 1000,
       }}
     >
       <Typography variant="h6">Cipher Sperren</Typography>
@@ -45,7 +51,7 @@ const Navbar = () => {
               cursor: 'pointer',
               '&:hover': { opacity: 0.8 }
             }}
-            src={user.picture || ''}
+            src={user.picture}
           />
           <Popover
             open={open}

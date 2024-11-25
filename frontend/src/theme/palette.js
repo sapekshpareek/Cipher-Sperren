@@ -1,7 +1,7 @@
 import { alpha } from '@mui/material/styles';
 
 // SETUP COLORS
-const GREY = {
+const grey = {
   0: '#FFFFFF',
   100: '#F9FAFB',
   200: '#F4F6F8',
@@ -14,88 +14,106 @@ const GREY = {
   900: '#161C24',
 };
 
-const PRIMARY = {
-  lighter: '#D1E9FC',
-  light: '#76B0F1',
-  main: '#2065D1',
-  dark: '#103996',
-  darker: '#061B64',
-  contrastText: '#fff',
+const primary = {
+  lighter: '#C8FAD6',
+  light: '#5BE49B',
+  main: '#00A76F',
+  dark: '#007867',
+  darker: '#004B50',
+  contrastText: '#FFFFFF',
 };
 
-const SECONDARY = {
-  lighter: '#D6E4FF',
-  light: '#84A9FF',
-  main: '#3366FF',
-  dark: '#1939B7',
-  darker: '#091A7A',
-  contrastText: '#fff',
+const secondary = {
+  lighter: '#EFD6FF',
+  light: '#C684FF',
+  main: '#8E33FF',
+  dark: '#5119B7',
+  darker: '#27097A',
+  contrastText: '#FFFFFF',
 };
 
-const INFO = {
-  lighter: '#D0F2FF',
-  light: '#74CAFF',
-  main: '#1890FF',
-  dark: '#0C53B7',
-  darker: '#04297A',
-  contrastText: '#fff',
+const info = {
+  lighter: '#CAFDF5',
+  light: '#61F3F3',
+  main: '#00B8D9',
+  dark: '#006C9C',
+  darker: '#003768',
+  contrastText: '#FFFFFF',
 };
 
-const SUCCESS = {
-  lighter: '#E9FCD4',
-  light: '#AAF27F',
-  main: '#54D62C',
-  dark: '#229A16',
-  darker: '#08660D',
-  contrastText: GREY[800],
+const success = {
+  lighter: '#D3FCD2',
+  light: '#77ED8B',
+  main: '#22C55E',
+  dark: '#118D57',
+  darker: '#065E49',
+  contrastText: '#ffffff',
 };
 
-const WARNING = {
-  lighter: '#FFF7CD',
-  light: '#FFE16A',
-  main: '#FFC107',
-  dark: '#B78103',
-  darker: '#7A4F01',
-  contrastText: GREY[800],
+const warning = {
+  lighter: '#FFF5CC',
+  light: '#FFD666',
+  main: '#FFAB00',
+  dark: '#B76E00',
+  darker: '#7A4100',
+  contrastText: grey[800],
 };
 
-const ERROR = {
-  lighter: '#FFE7D9',
-  light: '#FFA48D',
-  main: '#FF4842',
-  dark: '#B72136',
-  darker: '#7A0C2E',
-  contrastText: '#fff',
+const error = {
+  lighter: '#FFE9D5',
+  light: '#FFAC82',
+  main: '#FF5630',
+  dark: '#B71D18',
+  darker: '#7A0916',
+  contrastText: '#FFFFFF',
 };
+
+const common = {
+  black: '#000000',
+  white: '#FFFFFF',
+};
+
+const action = {
+  hover: alpha(grey[500], 0.08),
+  selected: alpha(grey[500], 0.16),
+  disabled: alpha(grey[500], 0.8),
+  disabledBackground: alpha(grey[500], 0.24),
+  focus: alpha(grey[500], 0.24),
+  hoverOpacity: 0.08,
+  disabledOpacity: 0.48,
+};
+
 
 export default function palette(mode) {
   const light = {
     mode: 'light',
-    primary: PRIMARY,
-    secondary: SECONDARY,
-    info: INFO,
-    success: SUCCESS,
-    warning: WARNING,
-    error: ERROR,
-    grey: GREY,
-    divider: alpha(GREY[500], 0.24),
+    primary: primary,
+    secondary: secondary,
+    info: info,
+    success: success,
+    warning: warning,
+    error: error,
+    grey: grey,
+    common: common,
+    action: action,
+    divider: alpha(grey[500], 0.24),
     text: {
-      primary: GREY[800],
-      secondary: GREY[600],
-      disabled: GREY[500],
+      primary: grey[800],
+      secondary: grey[600],
+      disabled: grey[500],
     },
     background: {
       paper: '#fff',
       default: '#fff',
-      neutral: GREY[200],
+      neutral: grey[200],
     },
     action: {
-      active: GREY[600],
-      hover: alpha(GREY[500], 0.08),
-      selected: alpha(GREY[500], 0.16),
-      disabled: alpha(GREY[500], 0.8),
-      disabledBackground: alpha(GREY[500], 0.24),
-      focus: alpha(GREY[500], 0.24),
+      active: grey[600],
+      hover: alpha(grey[500], 0.08),
+      selected: alpha(grey[500], 0.16),
+      disabled: alpha(grey[500], 0.8),
+      disabledBackground: alpha(grey[500], 0.24),
+      focus: alpha(grey[500], 0.24),
       hoverOpacity: 0.08,
       disabledOpacity: 0.48,
     },
@@ -103,31 +121,31 @@ export default function palette(mode) {
 
   const dark = {
     mode: 'dark',
-    primary: PRIMARY,
-    secondary: SECONDARY,
-    info: INFO,
-    success: SUCCESS,
-    warning: WARNING,
-    error: ERROR,
-    grey: GREY,
-    divider: alpha(GREY[500], 0.24),
+    primary: primary,
+    secondary: secondary,
+    info: info,
+    success: success,
+    warning: warning,
+    error: error,
+    grey: grey,
+    divider: alpha(grey[500], 0.24),
     text: {
       primary: '#fff',
-      secondary: GREY[500],
-      disabled: GREY[600],
+      secondary: grey[500],
+      disabled: grey[600],
     },
     background: {
-      paper: GREY[800],
-      default: GREY[900],
-      neutral: alpha(GREY[500], 0.16),
+      paper: grey[800],
+      default: grey[900],
+      neutral: alpha(grey[500], 0.16),
     },
     action: {
-      active: GREY[500],
-      hover: alpha(GREY[500], 0.08),
-      selected: alpha(GREY[500], 0.16),
-      disabled: alpha(GREY[500], 0.8),
-      disabledBackground: alpha(GREY[500], 0.24),
-      focus: alpha(GREY[500], 0.24),
+      active: grey[500],
+      hover: alpha(grey[500], 0.08),
+      selected: alpha(grey[500], 0.16),
+      disabled: alpha(grey[500], 0.8),
+      disabledBackground: alpha(grey[500], 0.24),
+      focus: alpha(grey[500], 0.24),
       hoverOpacity: 0.08,
       disabledOpacity: 0.48,
     },
